@@ -25,21 +25,21 @@ resource "null_resource" "frontend" {
     }
   # we establish connections
     connection {
-        type     = "ssh"
-        user     = "ec2-user"
-        password = "DevOps321"
-        host     = module.frontend.public_ip  
+      type     = "ssh"
+      user     = "ec2-user"
+      password = "DevOps321"
+      host     = module.frontend.private_ip  
     }
 
     provisioner "file" {   #we use provisioner to copy the file
-        source      = "${var.common_tags.Component}.sh"
-        destination = "/tmp/${var.common_tags.Component}.sh"
+      source      = "${var.common_tags.Component}.sh"
+      destination = "/tmp/${var.common_tags.Component}.sh"
     }
 
     provisioner "remote-exec" {   #after copying fie we use remote exec provisoner to run 
         inline = [
-            "chmod +x /tmp/${var.common_tags.Component}.sh",  # we gave here exex permisiion
-            "sudo sh /tmp/${var.common_tags.Component}.sh ${var.common_tags.Component} ${var.environment}"  # componet 
+          "chmod +x /tmp/${var.common_tags.Component}.sh",  # we gave here exex permisiion
+          "sudo sh /tmp/${var.common_tags.Component}.sh ${var.common_tags.Component} ${var.environment}"  # componet 
         ]
     } 
 }
@@ -183,7 +183,7 @@ resource "aws_lb_listener_rule" "frontend" {
 
   condition {
     host_header {
-      values = ["frontend.app-${var.environment}.${var.zone_name}"]
+      values = ["web-${var.environment}.${var.zone_name}"]
     }
   }
 }
