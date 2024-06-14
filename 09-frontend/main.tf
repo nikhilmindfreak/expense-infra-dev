@@ -38,7 +38,7 @@ resource "null_resource" "frontend" {
 
     provisioner "remote-exec" {   #after copying fie we use remote exec provisoner to run 
         inline = [
-          "chmod +x /tmp/${var.common_tags.Component}.sh",  # we gave here exex permisiion
+          "chmod +x /tmp/${var.common_tags.Component}.sh",  # we gave here exec permisiion
           "sudo sh /tmp/${var.common_tags.Component}.sh ${var.common_tags.Component} ${var.environment}"  # componet 
         ]
     } 
