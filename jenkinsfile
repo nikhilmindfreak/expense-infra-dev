@@ -1,10 +1,6 @@
 pipeline {
     agent {
-        label 'AGENT-1'
-    }
-    environment {
-    // Ensure PATH includes the directory where Terraform is installed
-    PATH = "${env.PATH}:/usr/local/bin"
+        label 'default'
     }
     options {
         timeout(time: 30, unit: 'MINUTES')
