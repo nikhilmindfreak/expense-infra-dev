@@ -15,7 +15,7 @@ pipeline {
             steps {
                sh """
                 cd 01-vpc
-                
+                terraform init -reconfigure
                """
             }
         }
@@ -28,7 +28,6 @@ pipeline {
             steps {
                 sh """
                 cd 01-vpc
-                terraform init -reconfigure
                 terraform plan
                 """
             }
@@ -68,7 +67,7 @@ pipeline {
     post { 
         always { 
             echo 'I will always say Hello again!'
-            deleteDir()   // to delete after build to avoid futher build anticipated errors
+            deleteDir()   // to delete after build to avoid futher build anticipated errors or cleanWs()
         }
         success { 
             echo 'I will run when pipeline is success'
