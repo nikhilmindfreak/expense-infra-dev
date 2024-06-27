@@ -7,7 +7,6 @@ pipeline {
         disableConcurrentBuilds()
         ansiColor('xterm')
     }
-    }
     stages {
         stage('Init') {
             steps {
@@ -41,4 +40,5 @@ pipeline {
         failure { 
             echo 'I will run when pipeline is failure'
         }
+    }
 }
