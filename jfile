@@ -8,14 +8,14 @@ pipeline {
         ansiColor('xterm') // terraform colours
     }
     parameters {
-        choice(name: 'action', choices: ['Apply', 'Destroy'], description: 'Pick something')
+        choice(name: 'action', choices: ['Apply', 'Destroy'], description: 'Pick something') // drop down para
     }
     stages {
         stage('Init') {
             steps {
                sh """
                 cd 01-vpc
-                terraform init -reconfigure
+                terraform init
                """
             }
         }
