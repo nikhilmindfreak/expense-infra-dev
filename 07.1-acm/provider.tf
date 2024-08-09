@@ -7,7 +7,7 @@ terraform {
   }
   backend "s3" {
     bucket = "devopsme-remote-state"
-    key    = "expense-dev-acm"  # always change key name for every new resourec
+    key    = "expense-dev-acm1"  # always change key name for every new resourec
     region = "us-east-1"
     dynamodb_table = "devopsme-locking"
   }
